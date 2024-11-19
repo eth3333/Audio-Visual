@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioVisual - 音訊視覺化</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="visualizer"></canvas>
+        
+        <div class="controls">
+            <button id="startButton" class="primary-button">
+                <svg class="mic-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                </svg>
+                啟動麥克風
+            </button>
+            
+            <div class="effect-controls">
+                <select id="effectMode" class="select-style">
+                    <option value="particles">粒子效果</option>
+                    <option value="waves">波浪效果</option>
+                    <option value="geometric">幾何效果</option>
+                    <option value="spectrum">頻譜效果</option>
+                    <option value="matrix">矩陣雨</option>
+                    <option value="kaleidoscope">萬花筒</option>
+                </select>
+                
+                <div class="control-group">
+                    <div class="sensitivity-control">
+                        <label for="sensitivity">靈敏度</label>
+                        <input type="range" id="sensitivity" min="0" max="100" value="50">
+                    </div>
+                    
+                    <div class="speed-control">
+                        <label for="speed">速度</label>
+                        <input type="range" id="speed" min="1" max="100" value="50">
+                    </div>
+                    
+                    <div class="size-control">
+                        <label for="size">大小</label>
+                        <input type="range" id="size" min="1" max="100" value="50">
+                    </div>
+                </div>
+                
+                <div class="color-picker">
+                    <label>顏色模式</label>
+                    <select id="colorMode" class="select-style">
+                        <option value="single">單色</option>
+                        <option value="gradient">漸變色</option>
+                        <option value="palette">自定義調色板</option>
+                    </select>
+                    
+                    <div id="singleColorControl" class="color-control">
+                        <label>選擇顏色</label>
+                        <input type="range" id="colorSlider" min="0" max="360" value="0" class="hue-slider">
+                    </div>
+                    
+                    <div id="gradientControl" class="color-control" style="display: none;">
+                        <label>起始顏色</label>
+                        <input type="range" id="startColorSlider" min="0" max="360" value="0" class="hue-slider">
+                        <label>結束顏色</label>
+                        <input type="range" id="endColorSlider" min="0" max="360" value="180" class="hue-slider">
+                    </div>
+                    
+                    <div id="paletteControl" class="color-control" style="display: none;">
+                        <div class="palette-colors">
+                            <div class="palette-color" style="background: #FF0000;"></div>
+                            <div class="palette-color" style="background: #00FF00;"></div>
+                            <div class="palette-color" style="background: #0000FF;"></div>
+                            <div class="palette-color" style="background: #FFFF00;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-preview" id="colorPreview"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/audioAnalyzer.js"></script>
+    <script src="scripts/visualizer.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html> 
